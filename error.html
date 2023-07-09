@@ -21,15 +21,18 @@
     const urlParams = new URLSearchParams(window.location.search);
     const statusCode = urlParams.get('code');
 
-    // Update the image source URL with the status code
+    // Update the page content with the actual status code
     document.addEventListener('DOMContentLoaded', () => {
+      const statusCodeElement = document.getElementById('status-code');
       const img = document.getElementById('error-image');
+
+      statusCodeElement.textContent = statusCode;
       img.src = `https://http.cat/${statusCode}`;
     });
   </script>
 </head>
 <body>
-  <h1>Error {{ status_code }}</h1>
+  <h1>Error <span id="status-code"></span></h1>
   <img id="error-image" src="" alt="HTTP Status Code Cat">
 </body>
 </html>
